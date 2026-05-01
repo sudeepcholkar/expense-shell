@@ -29,4 +29,17 @@ VALIDATE(){
 }
 
 CHECK_ROOT
-VALIDATE 0 SHELL
+echo "Script started $TIMESTAMP"
+
+dnf install mysql-server -y &>> $LOG_FILE
+VALIDATE $? "mysql-server installation is"
+
+systemctl enable mysqld &>> $LOG_FILE
+VALIDATE $? "Enable mysql server"
+
+systemctl start mysqld &>> $LOG_FILE
+VALIDATE $? "Start mysql server"
+
+
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>> $LOG_FILE
+VALIDATE $? "password setting "
