@@ -13,9 +13,20 @@ CHECK_ROOT(){
     if [ $USER_ID -ne 0 ]
     then
         echo "Please use sudo "
+        exit 1
     else
         echo "running sudo "
     fi
 }
 
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then
+        echo "$2 is:  FAILED " 
+    else
+        echo "$2 is:  SUCCESS " 
+    fi
+}
+
 CHECK_ROOT
+VALIDATE 0 SHELL
