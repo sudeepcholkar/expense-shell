@@ -12,7 +12,7 @@ USER_ID=$(id -u)
  CHECK_ROOT(){
      if [ $USER_ID -ne 0 ]
      then
-         echo " Please use root user " | tee -a $LOG_FILE
+         echo " Please use root user "
          exit 1
      fi
  }
