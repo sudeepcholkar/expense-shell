@@ -8,17 +8,14 @@ mkdir -p $LOGS_FOLDER
 
 USER_ID=$(id -u)
 
-
- CHECK_ROOT(){
-     if [ $USER_ID -ne 0 ]
-     then
-        echo " Please use root user "
-        exit 1
-    else 
-        echo "running sudo" 
-        
-     fi
- }
+CHECK_ROOT(){
+    if [ $USER_ID -ne 0 ]
+    then
+        echo "Please use sudo "
+    else
+        echo "running sudo "
+    fi
+}
 
 # VALIDATE(){
 #     if [ $1 -ne 0 ]
