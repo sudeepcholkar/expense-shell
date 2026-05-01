@@ -23,9 +23,9 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is: $R FAILED $N" | tee -a $LOG_FILE
+        echo -e "$2 is: $R FAILED $N" | tee -a $LOG_FILE
     else
-        echo "$2 is: $G SUCCESS $N" | tee -a $LOG_FILE
+        echo -e "$2 is: $G SUCCESS $N" | tee -a $LOG_FILE
     fi
 }
 
@@ -50,5 +50,5 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "password setting "
 else
-    echo "password is already set..$Y Skipping.. $N" | tee -a $LOG_FILE
+    echo -e "password is already set..$Y Skipping.. $N" | tee -a $LOG_FILE
 fi
