@@ -13,7 +13,7 @@ N="\e[0m"
 Y="\e[33m"
 
 CHECK_ROOT(){
-    if [ USER_ID -ne 0 ]
+    if [ $USER_ID -ne 0 ]
     then
         echo -e "$R Please use root user $N" | tee -a $LOG_FILE
         exit 1
@@ -39,7 +39,7 @@ VALIDATE $? "mysql-server installation is"
 systemctl enable mysqld &>> $LOG_FILE
 VALIDATE $? "Enable mysql server"
 
-systemctl start mysqld &>> $$LOG_FILE
+systemctl start mysqld &>> $LOG_FILE
 VALIDATE $? "Start mysql server"
 
 mysql -h 54.221.178.190 -u root -pExpenseApp@1 -e 'show databases;'
@@ -50,4 +50,5 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "password setting "
 else
-    echo "password is already set..$Y Skipping.. $N" tee -a $LOG_FILE
+    echo "password is already set..$Y Skipping.. $N" | tee -a $LOG_FILE
+fi
