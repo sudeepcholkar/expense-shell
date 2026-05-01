@@ -7,16 +7,15 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
 mkdir -p $LOGS_FOLDER
 
 USER_ID=$(id -u)
-echo $USER_ID
 
-# CHECK_ROOT(){
 
-#     if [ ${USER_ID} -ne 0 ]
-#     then
-#         echo " Please use root user " | tee -a $LOG_FILE
-#         exit 1
-#     fi
-# }
+ CHECK_ROOT(){
+     if [ $USER_ID -ne 0 ]
+     then
+         echo " Please use root user " | tee -a $LOG_FILE
+         exit 1
+     fi
+ }
 
 # VALIDATE(){
 #     if [ $1 -ne 0 ]
@@ -29,7 +28,7 @@ echo $USER_ID
 
 # echo "Script started $TIMESTAMP" | tee -a $LOG_FILE
 
-# CHECK_ROOT
+ CHECK_ROOT
 
 # dnf install mysql-server -y &>> $LOG_FILE
 # VALIDATE $? "mysql-server installation is"
