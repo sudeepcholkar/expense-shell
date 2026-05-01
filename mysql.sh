@@ -12,8 +12,11 @@ USER_ID=$(id -u)
  CHECK_ROOT(){
      if [ $USER_ID -ne 0 ]
      then
-         echo " Please use root user "
-         exit 1
+        echo " Please use root user "
+        exit 1
+    else 
+        echo "running sudo" 
+        
      fi
  }
 
