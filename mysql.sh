@@ -7,13 +7,9 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
 mkdir -p $LOGS_FOLDER
 
 USER_ID=$(id -u)
-R="\e[31m"
-G="\e[32m"
-N="\e[0m"
-Y="\e[33m"
 
 CHECK_ROOT(){
-    if [ $USER_ID -ne 0 ]
+    if [ ${USER_ID} -ne 0 ]
     then
         echo " Please use root user " | tee -a $LOG_FILE
         exit 1
@@ -42,7 +38,7 @@ VALIDATE $? "Enable mysql server"
 systemctl start mysqld &>> $LOG_FILE
 VALIDATE $? "Start mysql server"
 
-mysql -h 54.221.178.190 -u root -pExpenseApp@1 -e 'show databases;'
+mysql -h localhost -u root -pExpenseApp@1 -e 'show databases;'
 
 if [ $? -ne 0 ]
 then
