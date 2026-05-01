@@ -5,6 +5,9 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
 
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
 #echo "$SCRIPT_NAME $TIMESTAMP $LOG_FILE"
 
 USER_ID=$(id -u)
@@ -22,14 +25,15 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is:  FAILED " 
+        echo "$2 is: $R FAILED $N " 
     else
-        echo "$2 is:  SUCCESS " 
+        echo "$2 is: $G SUCCESS $N" 
     fi
 }
 
 CHECK_ROOT
 echo "Script started $TIMESTAMP"
+
 
 dnf install mysql-server -y &>> $LOG_FILE
 VALIDATE $? "mysql-server installation is"
