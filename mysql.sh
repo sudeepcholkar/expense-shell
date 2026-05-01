@@ -9,6 +9,7 @@ mkdir -p $LOGS_FOLDER
 USER_ID=$(id -u)
 
 CHECK_ROOT(){
+
     if [ ${USER_ID} -ne 0 ]
     then
         echo " Please use root user " | tee -a $LOG_FILE
@@ -38,7 +39,7 @@ VALIDATE $? "Enable mysql server"
 systemctl start mysqld &>> $LOG_FILE
 VALIDATE $? "Start mysql server"
 
-mysql -h localhost -u root -pExpenseApp@1 -e 'show databases;'
+mysql  -u root -pExpenseApp@1 -e 'show databases;' 
 
 if [ $? -ne 0 ]
 then
