@@ -17,6 +17,8 @@ CHECK_ROOT(){
     fi
 }
 
+CHECK_ROOT
+
 # VALIDATE(){
 #     if [ $1 -ne 0 ]
 #     then
@@ -28,7 +30,7 @@ CHECK_ROOT(){
 
 # echo "Script started $TIMESTAMP" | tee -a $LOG_FILE
 
- CHECK_ROOT
+
 
 # dnf install mysql-server -y &>> $LOG_FILE
 # VALIDATE $? "mysql-server installation is"
