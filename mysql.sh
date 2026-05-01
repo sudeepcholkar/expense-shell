@@ -6,7 +6,8 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
 mkdir -p $LOGS_FOLDER
 
-# USER_ID=$(id -u)
+USER_ID=$(id -u)
+echo $USER_ID
 
 # CHECK_ROOT(){
 
