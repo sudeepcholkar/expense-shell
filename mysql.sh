@@ -15,7 +15,7 @@ Y="\e[33m"
 CHECK_ROOT(){
     if [ $USER_ID -ne 0 ]
     then
-        echo -e "$R Please use root user $N" | tee -a $LOG_FILE
+        echo " Please use root user " | tee -a $LOG_FILE
         exit 1
     fi
 }
@@ -23,9 +23,9 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is: $R FAILED $N" | tee -a $LOG_FILE
+        echo "$2 is:  FAILED " | tee -a $LOG_FILE
     else
-        echo -e "$2 is: $G SUCCESS $N" | tee -a $LOG_FILE
+        echo "$2 is:  SUCCESS " | tee -a $LOG_FILE
     fi
 }
 
@@ -50,5 +50,5 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "password setting "
 else
-    echo -e "password is already set..$Y Skipping.. $N" | tee -a $LOG_FILE
+    echo  "password is already set.. Skipping.. " | tee -a $LOG_FILE
 fi
